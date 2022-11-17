@@ -52,9 +52,11 @@ class Canvas {
     m_height = h*bs;
     m_block_size = bs;
     
-    size_t tam =  w*h*bs*4;
+    size_t tam = m_width*m_height*4;
     
     m_pixels.reserve(tam);
+
+    std::cout << "tam: " << tam << std::endl;
   };
   /// Destructor.
   ~Canvas(void) = default;
