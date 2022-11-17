@@ -20,7 +20,7 @@ bool save_ppm3(const char* file_name, const unsigned char* data, size_t w, size_
   ofs_file << "255\n";
 
   auto size = w*h*4;
-  std::cout << "linha 23\n";
+  
   int count = 0;
   for(const unsigned char* it{data}; it<(data+size); it++){
       if(count < 2){
@@ -34,7 +34,6 @@ bool save_ppm3(const char* file_name, const unsigned char* data, size_t w, size_
       }
   }
   ofs_file.close();
-  std::cout << "linha 37\n";
   return true;
 }
 
@@ -77,7 +76,7 @@ int main(int argc, char* argv[])
 
   // generate some image
   unsigned width = 20, height = 15;
-  short block_size = 50;
+  short block_size = 1;
 
   // Criar uma imagem para desenho.
   Canvas image(width, height, block_size);

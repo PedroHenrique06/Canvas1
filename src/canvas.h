@@ -48,8 +48,8 @@ class Canvas {
    * @param bs The canvas block size in real pixels.
    */
   Canvas(size_t w = 0, size_t h = 0, short bs = 1){
-    m_width = w;
-    m_height = h;
+    m_width = w*bs;
+    m_height = h*bs;
     m_block_size = bs;
     
     size_t tam =  w*h*bs*4;
