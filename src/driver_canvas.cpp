@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
 
   // generate some image
   unsigned width = 20, height = 15;
-  short block_size = 1;
+  short block_size = 50;
 
   // Criar uma imagem para desenho.
   Canvas image(width, height, block_size);
