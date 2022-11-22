@@ -56,7 +56,7 @@ class Canvas {
     
     m_pixels.reserve(tam);
 
-    std::cout << "tam: " << tam << std::endl;
+    //std::cout << "tam: " << tam << std::endl;
   };
   /// Destructor.
   ~Canvas(void) = default;
