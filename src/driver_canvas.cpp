@@ -9,8 +9,7 @@
 using namespace life;
 
 /// Saves an image as a **ascii** PPM file.
-bool save_ppm3(const char* file_name, const unsigned char* data, size_t w, size_t h, size_t d=4)
-{
+bool save_ppm3(const char* file_name, const unsigned char* data, size_t w, size_t h, size_t d=4){
   std::ofstream ofs_file(file_name, std::ios::out);
   if (not ofs_file.is_open())
     return false;
@@ -24,16 +23,17 @@ bool save_ppm3(const char* file_name, const unsigned char* data, size_t w, size_
   int count = 0;
   for(const unsigned char* it{data}; it<(data+size); it++){
       if(count < 2){
-        ofs_file << std::to_string(*it) << " "; //0 1  
+        ofs_file << std::to_string(*it) << " ";  
         count++;
       }
       else{
-        ofs_file << std::to_string(*it) << "\n"; // 2
+        ofs_file << std::to_string(*it) << "\n";
         count = 0;
         it++;
       }
   }
   ofs_file.close();
+  
   return true;
 }
 
@@ -78,16 +78,16 @@ int main(int argc, char* argv[])
   unsigned width = 20, height = 15;
   short block_size = 50;
 
-  // Criar uma imagem para desenho.
+  // Creates the canvas
   Canvas image(width, height, block_size);
 
   for (auto x{ 0u }; x < width; x++){
     for (auto y{ 0u }; y < height; y++) {
       if (y % 2){
         if (!(x % 2)){
+          image.pixel( x,y , DEEP_SKY_BLUE );
           // another way to define a color.
-          image.pixel(x, y, color_pallet["deep_sky_blue"]);
-        // image.pixel( x,y , DEEP_SKY_BLUE );
+          //image.pixel(x, y, color_pallet["deep_sky_blue"]);
         }
         else{
           image.pixel(x, y, RED);
@@ -103,9 +103,8 @@ int main(int argc, char* argv[])
   }
 
   /// X = Column, Y = Row
-  image.pixel(5, 2, color_pallet["green"]);
-  std::cout << ">>> Gravando imagem '" << filename << "', dimensions: " << width << " x " << height << " (bs = " << block_size << "), please wait...\n"; 
-
+  image.pixel(0, 0, color_pallet["green"]);
+  std::cout << ">>> Gravando imagem '" << filename << "', dimensions: " << width << " x " << height << " (bs = " << block_size << "), please wait...\n";
   encode_png(file_png.c_str(), image.pixels(), image.width(), image.height());
   save_ppm3 (file_ppm.c_str(), image.pixels(), image.width(), image.height());
   std::cout << "<<< done!\n";
