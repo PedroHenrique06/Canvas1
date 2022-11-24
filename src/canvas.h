@@ -37,7 +37,6 @@ class Canvas {
   typedef uint8_t component_t;     //!< Type of a color channel.
   typedef unsigned long coord_t; //!< The pixel coordinate type.
   //== Constants
-  static constexpr uint8_t image_depth = 4;  //!< Default value is RGBA (4 channels).
 
  public:
   //=== Special members
@@ -55,8 +54,6 @@ class Canvas {
     size_t tam = m_width*m_height*4;
     
     m_pixels.reserve(tam);
-
-    std::cout << "tam: " << tam << std::endl;
   };
   /// Destructor.
   ~Canvas(void) = default;
@@ -66,7 +63,7 @@ class Canvas {
   Canvas& operator=(const Canvas&) = default;
  
   //=== Members
-  /// Clear the canvas with black color.
+  /// Clear the canvas with a given color.
   void clear(const Color& = BLACK);
   /// Set the color of a pixel on the canvas.
   void pixel(coord_t, coord_t, const Color&);
@@ -92,4 +89,4 @@ class Canvas {
 };
 }  // namespace life
 
-#endif  // CANVAS_H
+#endif  //CANVAS_H
